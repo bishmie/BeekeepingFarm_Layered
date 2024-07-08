@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" prefHeight="705.0" prefWidth="1132.0" style="-fx-background-color: #F4D03F;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.QueenBeeManageController">
+   <children>
+      <Label layoutX="435.0" layoutY="25.0" opacity="0.94" text="QUEEN BEE MANAGEMENT" textAlignment="JUSTIFY" textFill="#2e4053">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="18.0" layoutY="5.0" text="Hello!">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="32.0" text="Here's the overview of Queenbee Management.">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtQueenId" layoutX="34.0" layoutY="131.0" onAction="#txtSearchOnAction" onKeyReleased="#QueenIdOnKeyReleased" prefHeight="35.0" prefWidth="236.0" promptText="Queeen Bee Id" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtBreedingHistory" layoutX="455.0" layoutY="129.0" onKeyReleased="#breedingHistoryOnKeyReleased" prefHeight="35.0" prefWidth="236.0" promptText="Breeding History" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtBodyFeatures" layoutX="831.0" layoutY="129.0" onKeyReleased="#bodyfeaturesOnKeyReleased" prefHeight="35.0" prefWidth="236.0" promptText="Body Features" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtHealthStatus" layoutX="34.0" layoutY="213.0" onKeyReleased="#healthStatusOnKeyReleased" prefHeight="35.0" prefWidth="236.0" promptText="Health Status" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtIntroDate" layoutX="457.0" layoutY="215.0" onKeyReleased="#introDateOnKeyReleased" prefHeight="35.0" prefWidth="236.0" promptText="Introduce Date" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </TextField>
+      <Line endX="806.0" endY="-7.0" layoutX="283.0" layoutY="93.0" startX="-227.0" startY="-7.0" />
+      <TextField fx:id="txtVariety" layoutX="831.0" layoutY="218.0" onKeyReleased="#varietyOnKeyReleased" prefHeight="35.0" prefWidth="236.0" promptText="Variety" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="276.0" layoutY="387.0" opacity="0.94" text="AVAILABLE QUEEN BEES FOR YOUR NEXT HIVE." textAlignment="JUSTIFY" textFill="#2e4053">
+         <font>
+            <Font name="Candara Bold" size="17.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblAvailableQueenBees" layoutX="210.0" layoutY="423.0" prefHeight="270.0" prefWidth="540.0">
+         <columns>
+            <TableColumn fx:id="colAvailableQueenId" prefWidth="147.0" text="Queen Bee Id" />
+            <TableColumn fx:id="colAvailableVariety" prefWidth="192.0" text="variety" />
+            <TableColumn fx:id="colAvailableBreedHis" prefWidth="200.0" text="Breeding History" />
+         </columns>
+      </TableView>
+      <ComboBox fx:id="cmbBeeHiveId" editable="true" layoutX="35.0" layoutY="293.0" onAction="#cmbBeeHiveIdOnAction" prefHeight="35.0" prefWidth="236.0" promptText="Bee Hive Id" style="-fx-background-color: gray;" />
+      <JFXButton buttonType="RAISED" layoutX="704.0" layoutY="309.0" onAction="#btnSetOnAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: green;" text="SAVE" textFill="#f8f8f5">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="831.0" layoutY="309.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: brown;" text=" UPDATE" textFill="#fffefa">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="959.0" layoutY="309.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: red;" text="    DELETE" textFill="#f8f8f6">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="971.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-delete-30.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="839.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-update-24.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="27.0" fitWidth="21.0" layoutX="716.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-download-50.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="34.0" layoutY="108.0" text="Queen Bee Id" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="191.0" text="Health Status" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="454.0" layoutY="107.0" text="Breeding History" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="458.0" layoutY="192.0" text="Introduced Date" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="270.0" text="Bee Hive Id" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="832.0" layoutY="195.0" text="Variety" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="830.0" layoutY="107.0" text="Body Features" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="87.0" fitWidth="85.0" layoutX="214.0" layoutY="339.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-bee-94.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

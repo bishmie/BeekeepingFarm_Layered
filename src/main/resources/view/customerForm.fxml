@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" prefHeight="705.0" prefWidth="1132.0" style="-fx-background-color: #F4D03F;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.CustomerFormController">
+   <children>
+      <TableView fx:id="tblCustomerTable" editable="true" layoutX="101.0" layoutY="353.0" opacity="0.88" prefHeight="325.0" prefWidth="759.0" style="-fx-background-color: #FDFEFE;">
+         <columns>
+            <TableColumn fx:id="colCustomerId" prefWidth="121.0" text="CustomerId" />
+            <TableColumn fx:id="colName" prefWidth="130.0" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="185.0" text="Address" />
+            <TableColumn fx:id="colContact" prefWidth="156.0" text="Contact" />
+            <TableColumn fx:id="colEmail" prefWidth="178.0" text="Email" />
+         </columns>
+      </TableView>
+      <Label layoutX="360.0" layoutY="25.0" opacity="0.94" text="CUSTOMER MANAGEMENT" textAlignment="JUSTIFY" textFill="#2e4053">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="18.0" layoutY="5.0" text="Hello!" textFill="WHITE">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="19.0" layoutY="34.0" text="Here's the overview of Customer Management." textFill="WHITE">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtCustomerId" layoutX="101.0" layoutY="147.0" onAction="#txtSearchOnAction" onKeyReleased="#customerIdOnKeyReleased" prefHeight="35.0" prefWidth="236.0" promptText="Customer Id" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtCustomerName" layoutX="444.0" layoutY="149.0" prefHeight="35.0" prefWidth="236.0" promptText="Customer Name" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtCustomerAddress" layoutX="793.0" layoutY="150.0" prefHeight="35.0" prefWidth="236.0" promptText="Customer Address" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtCustomerContact" layoutX="101.0" layoutY="231.0" onKeyReleased="#contactOnKeyReleased" prefHeight="35.0" prefWidth="236.0" promptText="Contact Number" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtCustomerEmail" layoutX="443.0" layoutY="233.0" onKeyReleased="#emailAddressOnKeyReleased" prefHeight="35.0" prefWidth="236.0" promptText="Email Address" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </TextField>
+      <Line endX="809.0" endY="-7.0" layoutX="283.0" layoutY="82.0" startX="-227.0" startY="-7.0" />
+      <JFXButton buttonType="RAISED" layoutX="895.0" layoutY="417.0" onAction="#btnSendEmailsOnAction" prefHeight="35.0" prefWidth="117.0" style="-fx-background-color: black;" text="Emails" textFill="#fcf7f7">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="555.0" layoutY="287.0" onAction="#btnSetOnAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: green;" text="SAVE" textFill="#f8f8f5">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="678.0" layoutY="286.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: brown;" text=" UPDATE" textFill="#fffefa">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="800.0" layoutY="286.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: red;" text="DELETE" textFill="#f8f8f6">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="104.0" layoutY="125.0" text="Customer Id" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="445.0" layoutY="212.0" text="Email Address" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="446.0" layoutY="127.0" text="Customer Name" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="101.0" layoutY="209.0" text="Contact Number" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="795.0" layoutY="128.0" text="Address" textFill="#666768">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="806.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-delete-30.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="686.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-update-24.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="563.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-download-50.png" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" layoutX="922.0" layoutY="286.0" onAction="#btnPrintOnAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #A569BD;" text="    PRINT" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="933.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-print-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="155.0" layoutX="878.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/letter-5642_256.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

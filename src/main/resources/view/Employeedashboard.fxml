@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" prefHeight="705.0" prefWidth="1380.0" style="-fx-background-color: #2E4053;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.EmployeeDashBoardController">
+   <children>
+      <AnchorPane fx:id="ChildRootNode" layoutX="291.0" prefHeight="705.0" prefWidth="1132.0" style="-fx-background-color: WHITE; -fx-background-radius: 0;">
+         <children>
+            <Pane fx:id="paneId" layoutX="-291.0" prefHeight="60.0" prefWidth="1423.0" style="-fx-background-color: #2E4053; -fx-background-radius: o;">
+               <children>
+                  <Label layoutX="298.0" layoutY="21.0" text="Welcome to the Dashboard" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="541.0" layoutY="70.0" opacity="0.89" prefHeight="143.0" prefWidth="252.0" style="-fx-background-color: #F4D03F; -fx-background-radius: 8;" text=" " />
+            <Label layoutX="11.0" layoutY="72.0" opacity="0.89" prefHeight="143.0" prefWidth="252.0" style="-fx-background-color: #F4D03F; -fx-background-radius: 10;" text=" ">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="275.0" layoutY="71.0" opacity="0.89" prefHeight="143.0" prefWidth="252.0" style="-fx-background-color: #F4D03F; -fx-background-radius: 10;" text=" ">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="52.0" layoutY="179.0" text="Total Hives" textFill="WHITE">
+               <font>
+                  <Font name="Candara Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTotalHives" layoutX="66.0" layoutY="132.0" text="    " textFill="#2e4053">
+               <font>
+                  <Font name="Arial Bold" size="38.0" />
+               </font>
+            </Label>
+            <Label layoutX="319.0" layoutY="179.0" text="Total QueenBees" textFill="WHITE">
+               <font>
+                  <Font name="Candara Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTotalQueenBees" layoutX="322.0" layoutY="132.0" text="     " textFill="#2e4053">
+               <font>
+                  <Font name="Arial Bold" size="38.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="207.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-hive-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="480.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-bees-64.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblSetTime" layoutX="987.0" layoutY="27.0" text="sqsq" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="959.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-clock-50.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblLocalDate" layoutX="811.0" layoutY="28.0" prefHeight="17.0" prefWidth="116.0" text="dwdwd" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="22.0" fitWidth="23.0" layoutX="783.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-date-50.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="807.0" layoutY="69.0" opacity="0.89" prefHeight="143.0" prefWidth="252.0" style="-fx-background-color: #F4D03F; -fx-background-radius: 8;" text=" " />
+            <ImageView fitHeight="471.0" fitWidth="488.0" layoutX="661.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/pexels-anna-pou-8329261.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="365.0" fitWidth="614.0" layoutX="10.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/WhatsApp%20Image%202024-05-23%20at%2011.40.32%20PM.jpeg" />
+               </image>
+            </ImageView>
+            <Label layoutX="588.0" layoutY="179.0" text="Total BeeKeepers" textFill="WHITE">
+               <font>
+                  <Font name="Candara Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTotalQueenBees1" layoutX="584.0" layoutY="133.0" text="11  " textFill="#2e4053">
+               <font>
+                  <Font name="Arial Bold" size="38.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="741.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-customer-48.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="1004.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-supplier-30.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="853.0" layoutY="179.0" text="Total Collectors" textFill="WHITE">
+               <font>
+                  <Font name="Candara Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTotalQueenBees11" layoutX="853.0" layoutY="132.0" text="5" textFill="#2e4053">
+               <font>
+                  <Font name="Arial Bold" size="38.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <VBox fx:id="slider" layoutX="38.0" layoutY="193.0" prefHeight="298.0" prefWidth="206.0" style="-fx-background-color: #2E4053;">
+         <children>
+            <JFXButton onAction="#btnHarvestManagementOnAction" prefHeight="43.0" prefWidth="206.0" stylesheets="@../css/style.css" text="Harvest Management" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton onAction="#btnHiveManagemetOnAction" prefHeight="43.0" prefWidth="206.0" stylesheets="@../css/style.css" text="Hive Management" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton onAction="#btnQueenBeeManagemetOnAction" prefHeight="43.0" prefWidth="206.0" stylesheets="@../css/style.css" text="Queen Bee Management" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton onAction="#btnBeeKpeeperProfileOnAction" prefHeight="43.0" prefWidth="206.0" stylesheets="@../css/style.css" text="BeeKeeper Profile" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton onAction="#btnLogoutOnAction" prefHeight="42.0" prefWidth="206.0" stylesheets="@../css/style.css" text="Logout" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="13.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </VBox>
+      <Label fx:id="lblMenu" layoutX="68.0" layoutY="62.0" text="  MENU" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="29.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="lblMenuBack" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-menu-50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      
+   </children>
+</AnchorPane>

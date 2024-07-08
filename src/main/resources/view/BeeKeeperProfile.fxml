@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" prefHeight="705.0" prefWidth="1132.0" style="-fx-background-color: #F4D03F;" styleClass="backdropBtn" stylesheets="@../css/hiveManage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.BeeKeeperProfileController">
+   <children>
+      <Label layoutX="648.0" layoutY="30.0" opacity="0.94" text="WELCOME TO YOUR PROFILE" textAlignment="JUSTIFY" textFill="#2e4053">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtId" layoutX="748.0" layoutY="134.0" onAction="#btnSearchOnAction" prefHeight="35.0" prefWidth="244.0" promptText="Enter Your BeekeeperId" style="-fx-background-color: #FDFEFE; -fx-background-radius: 8;">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="597.0" layoutY="143.0" text="Bee Keeper Id:" textFill="#2e4053">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="597.0" layoutY="228.0" text="Bee Keeper Name:" textFill="#2e4053">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="596.0" layoutY="307.0" text="Task Name:" textFill="#2e4053">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="595.0" layoutY="467.0" text="Description:" textFill="#2e4053">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="598.0" layoutY="383.0" text="Due Time:" textFill="#2e4053">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Label>
+      <Line endX="468.0" layoutX="594.0" layoutY="73.0" startX="-5.0" />
+      <Label fx:id="lblTaskName" layoutX="748.0" layoutY="298.0" prefHeight="35.0" prefWidth="244.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 8;">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDueTime" layoutX="748.0" layoutY="383.0" prefHeight="35.0" prefWidth="244.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 8;">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblBeekeeperName" layoutX="748.0" layoutY="219.0" prefHeight="35.0" prefWidth="244.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 8;">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDescription" layoutX="748.0" layoutY="467.0" prefHeight="107.0" prefWidth="254.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 8;" />
+      <ImageView fitHeight="711.0" fitWidth="471.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/pexels-anete-lusina-5247996.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" prefHeight="705.0" prefWidth="1132.0" style="-fx-background-color: #F4D03F;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.SupplierFormController">
+   <children>
+      <Label layoutX="333.0" layoutY="24.0" opacity="0.94" text="SUPPLIER MANAGEMENT" textAlignment="JUSTIFY" textFill="#2e4053">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="15.0" layoutY="4.0" text="Hello!" textFill="WHITE">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="16.0" layoutY="32.0" text="Here's the overview of Inventory Management." textFill="WHITE">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Line endX="750.0" layoutX="359.0" layoutY="83.0" startX="-296.0" />
+      <TextField fx:id="txtSupplierId" layoutX="36.0" layoutY="149.0" onAction="#btnTaskSearchOnAction" onKeyReleased="#supplierOnKeyReleased" prefHeight="46.0" prefWidth="251.0" promptText="Supplier Id" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtSupplierName" layoutX="411.0" layoutY="149.0" onKeyReleased="#supNameOnKeyReleased" prefHeight="46.0" prefWidth="251.0" promptText="Supplier Name" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </TextField>
+      <ComboBox fx:id="cmbInventoryId" editable="true" layoutX="785.0" layoutY="245.0" prefHeight="46.0" prefWidth="251.0" promptText="Inventory Id" style="-fx-background-color: white;" visibleRowCount="5" />
+      <TextField fx:id="txtSupplierAddress" layoutX="785.0" layoutY="149.0" onKeyReleased="#addressOnKeyReleased" prefHeight="46.0" prefWidth="251.0" promptText="Adddress" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtContact" layoutX="36.0" layoutY="245.0" onKeyReleased="#contactOnKeyReleased" prefHeight="46.0" prefWidth="251.0" promptText="Contact" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtEmail" layoutX="411.0" layoutY="245.0" onKeyReleased="#emailOnKeyReleased" prefHeight="46.0" prefWidth="251.0" promptText="Email" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </TextField>
+      <JFXButton buttonType="RAISED" layoutX="688.0" layoutY="347.0" onAction="#btnSetSupplierOnAction" prefHeight="35.0" prefWidth="108.0" ripplerFill="#252424" style="-fx-background-color: green;" text="SAVE" textFill="#f8f8f5">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="808.0" layoutY="347.0" onAction="#btnUpdateSupplierOnAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: brown;" text="   UPDATE" textFill="#fffefa">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="928.0" layoutY="347.0" onAction="#btnDeleteSupplierOnAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: red;" text=" DELETE" textFill="#f8f8f6">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <InnerShadow choke="0.3" height="61.55" radius="31.0075" width="64.48" />
+         </effect>
+      </JFXButton>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="702.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-download-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="817.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-update-24.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="27.0" layoutX="937.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-delete-30.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="36.0" layoutY="125.0" text="Supplier Id" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="225.0" text="Contact" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="411.0" layoutY="125.0" text="Supplier Name" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="411.0" layoutY="226.0" text="Email" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="787.0" layoutY="125.0" text="Address" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="787.0" layoutY="226.0" text="Inventory Id" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

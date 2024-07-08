@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" prefHeight="705.0" prefWidth="1132.0" style="-fx-background-color: #F4D03F;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PlaceOrderFormController">
+   <children>
+      <TableView fx:id="tblPlaceOrder" editable="true" layoutX="50.0" layoutY="304.0" opacity="0.88" prefHeight="304.0" prefWidth="605.0" style="-fx-background-color: #F0F3F4;">
+         <columns>
+            <TableColumn fx:id="colProductId" prefWidth="86.0" text="Product Id" />
+            <TableColumn fx:id="colProductName" prefWidth="120.0" text="Product Name" />
+            <TableColumn fx:id="colQty" prefWidth="78.0" text="qty" />
+            <TableColumn fx:id="colSellingPrice" prefWidth="118.0" text="Selling Price" />
+            <TableColumn fx:id="colTotal" prefWidth="94.0" text="Total" />
+            <TableColumn fx:id="colAction" prefWidth="108.0" text="Action" />
+         </columns>
+      </TableView>
+      <Label layoutX="343.0" layoutY="25.0" opacity="0.94" text="PLACING ORDERS" textAlignment="JUSTIFY" textFill="#2e4053">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="41.0" layoutY="5.0" text="Hello!" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="43.0" layoutY="32.0" text="Here's the overview of Order Management." textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="11.0" />
+         </font>
+      </Label>
+      <Line endX="797.0" endY="-7.0" layoutX="283.0" layoutY="86.0" startX="-227.0" startY="-7.0" />
+      <ComboBox fx:id="cmbCustomerId" editable="true" layoutX="169.0" layoutY="137.0" onAction="#cmbCustomerOnAction" prefHeight="27.0" prefWidth="199.0" style="-fx-background-color: white;" />
+      <TextField fx:id="txtQty" layoutX="687.0" layoutY="243.0" onAction="#txtQtyOnAction" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </TextField>
+      <ComboBox fx:id="cmbProductId" editable="true" layoutX="169.0" layoutY="193.0" onAction="#cmbProductOnAction" prefHeight="27.0" prefWidth="199.0" style="-fx-background-color: white;" />
+      <JFXButton fx:id="btnAddToCart" buttonType="RAISED" layoutX="823.0" layoutY="243.0" onAction="#btnAddToCartOnAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: green;" text="    Add to Cart" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="46.0" layoutY="625.0" text="Sub Total:" textFill="#2e4053">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="685.0" layoutY="624.0" onAction="#btnConfirmOrderOnAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: brown;" text="Confirm" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="54.0" layoutY="103.0" text="Order Id:" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="53.0" layoutY="147.0" text="Customer Id:" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="53.0" layoutY="204.0" text="Product Id:" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="649.0" layoutY="102.0" text="Order Date:" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="647.0" layoutY="148.0" text="Customer Name:" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="648.0" layoutY="204.0" text="Product Name:" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="252.0" prefHeight="20.0" prefWidth="106.0" text="Selling Price:" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="350.0" layoutY="255.0" text="QtyOnHand:" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="649.0" layoutY="253.0" text="Qty:" textFill="#2e4053">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblSubTotal" layoutX="151.0" layoutY="623.0" prefHeight="17.0" prefWidth="30.0" style="-fx-background-color: #E5E7E9;" />
+      <JFXButton layoutX="275.0" layoutY="590.0" onAction="#btnMoneyReceiving" prefHeight="25.0" prefWidth="64.0" text=" " />
+      <Label fx:id="lblOrderId" layoutX="170.0" layoutY="102.0" prefHeight="17.0" prefWidth="199.0">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOderDate" layoutX="807.0" layoutY="101.0" prefHeight="17.0" prefWidth="199.0">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblSellingPrice" layoutX="172.0" layoutY="250.0" prefHeight="17.0" prefWidth="129.0">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblQtyOnHand" layoutX="452.0" layoutY="253.0" prefHeight="17.0" prefWidth="129.0">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCustomerName" layoutX="807.0" layoutY="146.0" prefHeight="17.0" prefWidth="199.0">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblProductName" layoutX="806.0" layoutY="200.0" prefHeight="17.0" prefWidth="199.0">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="823.0" layoutY="624.0" onAction="#btnPrintBillOnAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: red;" text="Print Bill" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="825.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-add-to-cart-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="692.0" layoutY="631.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-confirm-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="828.0" layoutY="631.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-print-50.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
