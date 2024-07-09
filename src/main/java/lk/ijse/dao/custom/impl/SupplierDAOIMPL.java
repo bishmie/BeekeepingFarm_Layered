@@ -25,7 +25,7 @@ public class SupplierDAOIMPL implements SupplierDAO {
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        return false;
+        return SQLUtil.execute("DELETE FROM supplier WHERE supplierId= ?",id);
     }
 
     @Override

@@ -1,9 +1,6 @@
 package lk.ijse.bo;
 
-import lk.ijse.bo.custom.impl.CustomerBOImpl;
-import lk.ijse.bo.custom.impl.ProductBOImpl;
-import lk.ijse.bo.custom.impl.SupplierBOImpl;
-import lk.ijse.bo.custom.impl.UserBOImpl;
+import lk.ijse.bo.custom.impl.*;
 
 public class BOFactory {
     private static BOFactory boFactory;
@@ -14,7 +11,7 @@ public class BOFactory {
     }
 
     public enum BOTypes{
-        CUSTOMER,USER,PRODUCT,SUPPLIER
+        CUSTOMER,USER,PRODUCT,SUPPLIER,QUEENBEE
     }
     //Object creation logic for BO objects
     public SuperBO getBO(BOTypes types){
@@ -27,6 +24,8 @@ public class BOFactory {
                 return new ProductBOImpl();
             case SUPPLIER:
                 return new SupplierBOImpl();
+            case QUEENBEE:
+                return new QueenBeeBOImpl();
 
             default:
                 return null;

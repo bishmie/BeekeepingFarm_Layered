@@ -44,37 +44,26 @@ public class SupplierFormController {
     public void btnTaskSearchOnAction(ActionEvent actionEvent) {
         String id = txtSupplierId.getText();
 
-        String sql = "SELECT * FROM supplier WHERE supplierId =?";
 
-        try{
-            Connection connection = DbConnection.getInstance().getConnection();
-            PreparedStatement pstm = connection.prepareStatement(sql);
+        try {
+            SupplierDTO supplierDTO = supplierBO.searchUpplier(id);
 
-            pstm.setString(1,id);
+          if(supplierDTO!= null){
+            txtSupplierId.setText(supplierDTO.getSupplierId());
+            txtSupplierName.setText(supplierDTO.getName());
+            txtSupplierAddress.setText(supplierDTO.getAddress());
+            txtContact.setText(supplierDTO.getContact());
+            txtEmail.setText(supplierDTO.getEmail());
+            cmbInventoryId.setValue(supplierDTO.getInventoryId());}
+          else{
+              new Alert(Alert.AlertType.ERROR, "supplier Not Found").show();
+          }
 
-            ResultSet resultSet = pstm.executeQuery();
-            if (resultSet.next()) {
-                String name = resultSet.getString(2);
-                String address = resultSet.getString(3);
-                String contact = resultSet.getString(4);
-                String email = resultSet.getString(5);
-                String inventoryId= resultSet.getString(6);
-
-
-                txtSupplierId.setText(id);
-                txtSupplierName.setText(name);
-                txtSupplierAddress.setText(address);
-                txtContact.setText(contact);
-                txtEmail.setText(email);
-                cmbInventoryId.setValue(inventoryId);
-
-            } else {
-                new Alert(Alert.AlertType.ERROR, "supplier Not Found").show();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.INFORMATION,"supplier ID Not Found!");
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        } catch (ClassNotFoundException ex) {
+            throw new RuntimeException(ex);
         }
-
     }
 
 
@@ -95,8 +84,6 @@ public class SupplierFormController {
 
 
         try {
-       //    supplierBO.saveSupplier(new SupplierDTO(id,name,address,contact,email,inventoryId));
-
 
             boolean isSaved = supplierBO.saveSupplier(new SupplierDTO(id,name,address,contact,email,inventoryId));
 
@@ -152,7 +139,19 @@ public class SupplierFormController {
     }
 
     public void btnDeleteSupplierOnAction(ActionEvent actionEvent) {
+        String id = txtSupplierId.getText();
 
+        try {
+            boolean isDeleted = supplierBO.deleteSupplier(id);
+            if(isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "supplier is successfully deleted!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        clearSupplierFields();
     }
 
 

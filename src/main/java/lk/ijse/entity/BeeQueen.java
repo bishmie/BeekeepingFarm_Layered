@@ -1,7 +1,7 @@
 package lk.ijse.entity;
 
 
-public class beeQueen {
+public class BeeQueen {
     private String queenId;
     private String breedingHistory;
     private String bodyFeatures;
@@ -11,7 +11,7 @@ public class beeQueen {
     private String variety;
 
 
-    public beeQueen(String queenId, String breedingHistory, String bodyFeatures, String healthStatus, String introducedDate, String beehiveId, String variety) {
+    public BeeQueen(String queenId, String breedingHistory, String bodyFeatures, String healthStatus, String introducedDate, String beehiveId, String variety) {
         this.queenId = queenId;
         this.breedingHistory = breedingHistory;
         this.bodyFeatures = bodyFeatures;
@@ -21,7 +21,7 @@ public class beeQueen {
         this.variety = variety;
     }
 
-    public beeQueen(String string, String string1, String string2) {
+    public BeeQueen(String string, String string1, String string2) {
     }
 
     public String getQueenId() {
