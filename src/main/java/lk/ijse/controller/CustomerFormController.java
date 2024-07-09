@@ -128,88 +128,101 @@ public class CustomerFormController {
     }
 
     private void clearFields() {
-        txtCustomerId.setText("");
-        txtCustomerName.setText("");
-        txtCustomerAddress.setText("");
-        txtCustomerContact.setText("");
-        txtCustomerEmail.setText("");
+        txtCustomerId.clear();
+        txtCustomerName.clear();
+        txtCustomerAddress.clear();
+        txtCustomerContact.clear();
+        txtCustomerEmail.clear();
     }
 
     @FXML
-    void txtSearchOnAction(ActionEvent event) throws SQLException {
+    void txtSearchOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String id = txtCustomerId.getText();
 
         String sql = "SELECT * FROM customer WHERE customerId =?";
 
         try{
-            Connection connection = DbConnection.getInstance().getConnection();
-            PreparedStatement pstm = connection.prepareStatement(sql);
+            CustomerDTO customerDTO = customerBO.searchCustomer(id);
+            if(customerDTO != null){
 
-            pstm.setString(1,id);
-
-            ResultSet resultSet = pstm.executeQuery();
-            if (resultSet.next()) {
-                String name = resultSet.getString(2);
-                String address = resultSet.getString(3);
-                String contact = resultSet.getString(4);
-                String email = resultSet.getString(5);
-
-
-                txtCustomerName.setText(name);
-                txtCustomerAddress.setText(address);
-                txtCustomerContact.setText(contact);
-                txtCustomerEmail.setText(email);
-            } else {
+                txtCustomerName.setText(customerDTO.getName());
+                txtCustomerAddress.setText(customerDTO.getAddress());
+                txtCustomerContact.setText(customerDTO.getContact());
+                txtCustomerEmail.setText(customerDTO.getEmail());
+            }
+             else {
                 new Alert(Alert.AlertType.ERROR, "Customer Not Found").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.INFORMATION,"Customer ID Not Found!");
         }
+
+
+
+
+
     }
     @FXML
     void btnUpdateOnAction(ActionEvent actionEvent) {
+        if (!isValid()) {
+            // If validation fails, show an error alert and return early
+            new Alert(Alert.AlertType.ERROR, "Please ensure all fields are correctly filled out.").show();
+            return;
+        }
+
+        String CustomerId = txtCustomerId.getText();
+        String Name = txtCustomerName.getText();
+        String Address = txtCustomerAddress.getText();
+        String Contact = txtCustomerContact.getText();
+        String Email = txtCustomerEmail.getText();
 
 
+        boolean isUpdate = false;
+        try {
+            isUpdate = customerBO.updateCustomer(new CustomerDTO(CustomerId,Name,Address,Contact,Email));
+            tblCustomerTable.refresh();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        if (isUpdate) {
+            new Alert(Alert.AlertType.INFORMATION, "Customer Updated Successfully").show();
+        }else {
+            new Alert(Alert.AlertType.ERROR, "Customer Not Updated").show();
+        }
+        clearFields();
     }
 
     @FXML
      void btnDeleteOnAction(ActionEvent actionEvent) {
+        String id = txtCustomerId.getText();
+
+        try {
+            boolean isdelete = customerBO.delete(id);
+            if(isdelete){
+                new Alert(Alert.AlertType.CONFIRMATION, "customer is successfully deleted!").show();
+
+            }
+
+            tblCustomerTable.getItems().remove(tblCustomerTable.getSelectionModel().getSelectedItem());
+            tblCustomerTable.getSelectionModel().clearSelection();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        clearFields();
 
     }
 
 
 
-    public void btnDashBoardOnAction(ActionEvent actionEvent) throws IOException {
-        navigateToDashBoard();
 
-    }
 
-    private void navigateToDashBoard() throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashboard.fxml"));
-
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = (Stage) this.rootNode.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setTitle("Dashboard Form");
-    }
-
-    public void btnLogOutOnAction(ActionEvent actionEvent) throws IOException {
-        navigateToLoginPage();
-
-    }
-
-    private void navigateToLoginPage() throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/loginPage.fxml"));
-
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = (Stage) this.rootNode.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setTitle("Login Form");
-    }
 
     public void btnSendEmailsOnAction(ActionEvent actionEvent) throws IOException {
         navigateToEmailForm();

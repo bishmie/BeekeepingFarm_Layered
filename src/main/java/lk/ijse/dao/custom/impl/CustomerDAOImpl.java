@@ -2,15 +2,19 @@ package lk.ijse.dao.custom.impl;
 
 import lk.ijse.dao.SQLUtil;
 import lk.ijse.dao.custom.CustomerDAO;
+import lk.ijse.db.DbConnection;
 import lk.ijse.entity.Customer;
+import lk.ijse.entity.Product;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CustomerDAOImpl implements CustomerDAO {
     @Override
-    public ArrayList<Customer> getAllCustomers() throws SQLException, ClassNotFoundException {
+    public ArrayList<Customer> getAll() throws SQLException, ClassNotFoundException {
 
         ArrayList<Customer> allCustomers = new ArrayList<>();
         ResultSet rst = SQLUtil.execute("SELECT * FROM Customer");
@@ -22,8 +26,33 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public boolean saveCustomers(Customer customer) throws SQLException, ClassNotFoundException {
+    public boolean save(Customer customer) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("INSERT INTO customer(customerId,name,address,contact,email) VALUES (?,?,?,?,?)",customer.getCustomerId(),customer.getName(),customer.getAddress(),customer.getContact(),customer.getEmail());
 
+    }
+
+    @Override
+    public Customer search(String id) throws SQLException, ClassNotFoundException {
+
+        ResultSet resultSet = SQLUtil.execute("SELECT * FROM customer WHERE customerId =?", id);
+        if (resultSet.next()) {
+            String name = resultSet.getString(2);
+            String address = resultSet.getString(3);
+            String contact = resultSet.getString(4);
+            String email = resultSet.getString(5);
+            return new Customer(resultSet.getString(1), name, address, contact, email);
+
+        }
+        return null;
+    }
+
+    @Override
+    public boolean update(Customer customer) throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute("UPDATE customer SET name =?, address =?, contact =?, email =? WHERE customerId =?",customer.getName(),customer.getAddress(),customer.getContact(),customer.getEmail(),customer.getCustomerId());
+    }
+
+    @Override
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute("DELETE FROM customer WHERE customerId=?",id);
     }
 }
