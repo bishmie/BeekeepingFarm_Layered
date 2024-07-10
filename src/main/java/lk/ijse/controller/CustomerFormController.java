@@ -1,5 +1,6 @@
 package lk.ijse.controller;
 
+import com.beust.ah.A;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -119,6 +120,7 @@ public class CustomerFormController {
         try{
             customerBO.saveCustomers(new CustomerDTO(customerId,name,address,contact,email));
             tblCustomerTable.getItems().add(new CustomerTM(customerId, name, address,contact,email));
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Failed to save the customer " + e.getMessage()).show();
         } catch (ClassNotFoundException e) {
@@ -139,7 +141,7 @@ public class CustomerFormController {
     void txtSearchOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String id = txtCustomerId.getText();
 
-        String sql = "SELECT * FROM customer WHERE customerId =?";
+
 
         try{
             CustomerDTO customerDTO = customerBO.searchCustomer(id);
@@ -171,27 +173,31 @@ public class CustomerFormController {
         }
 
         String CustomerId = txtCustomerId.getText();
+
+
         String Name = txtCustomerName.getText();
         String Address = txtCustomerAddress.getText();
         String Contact = txtCustomerContact.getText();
         String Email = txtCustomerEmail.getText();
 
 
-        boolean isUpdate = false;
+
         try {
-            isUpdate = customerBO.updateCustomer(new CustomerDTO(CustomerId,Name,Address,Contact,Email));
-            tblCustomerTable.refresh();
+           boolean isUpdate = customerBO.updateCustomer(new CustomerDTO(CustomerId,Name,Address,Contact,Email));
+           if(isUpdate) {
+               new Alert(Alert.AlertType.INFORMATION, "Customer Updated Successfully").show();
+                this.loadAllCustomers();
+
+           }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            new Alert(Alert.AlertType.ERROR, "Customer Not Updated").show();
+
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
-        if (isUpdate) {
-            new Alert(Alert.AlertType.INFORMATION, "Customer Updated Successfully").show();
-        }else {
-            new Alert(Alert.AlertType.ERROR, "Customer Not Updated").show();
-        }
+
+
         clearFields();
     }
 

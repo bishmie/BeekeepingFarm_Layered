@@ -99,13 +99,13 @@ public class QueenBeeManageController {
 
         try {
           boolean isSaved =  queenBeeBO.saveQueenBee(new BeeQueenDTO(id,breedingHistory,bodyFeatures,healthStatus,introducedDate,beehiveId,variety));
-
+          tblAvailableQueenBees.getItems().add(new QueenBeeTM(id,variety,breedingHistory));
 
           if (isSaved) {
                 new Alert(Alert.AlertType.INFORMATION, "Queen bee is Saved Successfully").show();
             }
             else {
-                new Alert(Alert.AlertType.INFORMATION, "Queen bee is Not Saved ").show();
+                new Alert(Alert.AlertType.ERROR, "Queen bee is Not Saved ").show();
 
             }
         } catch (SQLException e) {

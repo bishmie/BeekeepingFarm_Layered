@@ -94,6 +94,7 @@ public class ProductFormController {
 
         try {
             boolean isSaved = productBO.saveProduct(new ProductDTO(ProductId,ProductName,SellingPrice,NetWeight,Qty,harvestId));
+            tblProduct.getItems().add(new ProductTM(ProductId,ProductName,Qty));
 
        if(isSaved){
            new Alert(Alert.AlertType.INFORMATION, "Product saved Successfully ").show();
