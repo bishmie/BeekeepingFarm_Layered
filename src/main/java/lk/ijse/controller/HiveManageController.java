@@ -61,6 +61,7 @@ public class HiveManageController {
     }
 
     private void loadAllCustomers() {
+        tblHive.getItems().clear();
         try {
             ArrayList<BeeHiveDTO> getAll = hiveBO.getAllHives();
             for(BeeHiveDTO b : getAll){
@@ -80,7 +81,6 @@ public class HiveManageController {
 
     public void btnSetOnAction(ActionEvent actionEvent) {
 
-
         String id = txtHiveid.getText();
         String type = txtTYpe.getText();
         String location = txtLocation.getText();
@@ -88,7 +88,24 @@ public class HiveManageController {
         String inspectionDate = txtInspectiondate.getText();
         String inspectionResult = txtResults.getText();
 
+        try {
+            boolean isSaved = hiveBO.saveHives(new BeeHiveDTO(id,type,location,population,inspectionDate,inspectionResult));
+            System.out.println("weda karapan yakooooooo");
+            tblHive.getItems().add(new HiveTM(id,type,location,population,inspectionDate,inspectionResult));
 
+            if(isSaved){
+               new Alert(Alert.AlertType.INFORMATION,"hive successfully saved").show();
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Waradi1");
+            new Alert(Alert.AlertType.ERROR,"hive does not save").show();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Waradi2 ");
+            throw new RuntimeException(e);
+
+        }
+        clearFields();
 
 
     }
@@ -117,8 +134,19 @@ public class HiveManageController {
         String inspectionDate = txtInspectiondate.getText();
         String inspectionResult = txtResults.getText();
 
+        try {
+            boolean isUpdate = hiveBO.updateHive(new BeeHiveDTO(id,type,location,population,inspectionDate,inspectionResult));
+            if(isUpdate) {
+                this.loadAllCustomers();
+                new Alert(Alert.AlertType.INFORMATION, "Hive successfully updated").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,"hive does not updated.").show();
 
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
+    }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
         if (!isValid()) {
@@ -128,12 +156,40 @@ public class HiveManageController {
         }
         String id = txtHiveid.getText();
 
+        try {
+            boolean isDelete = hiveBO.delete(id);
+            if(isDelete){
+                new Alert(Alert.AlertType.INFORMATION,"hive deleted successfully").show();
+                loadAllCustomers();
+            }
+        } catch (SQLException e) {
+           new Alert(Alert.AlertType.ERROR,"hive does not deleted").show();;
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
 
     public void txtSearchOnAction(ActionEvent actionEvent) {
         String id = txtHiveid.getText();
+
+        try {
+            BeeHiveDTO beeHiveDTO = hiveBO.searchHive(id);
+
+            if(beeHiveDTO != null){
+                txtTYpe.setText(beeHiveDTO.getType());
+                txtLocation.setText(beeHiveDTO.getLocation());
+                txtPOpulation.setText(beeHiveDTO.getPopulation());
+                txtInspectiondate.setText(beeHiveDTO.getInspectionDate());
+                txtResults.setText(beeHiveDTO.getInspectionResult());
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,"hive id not found");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
