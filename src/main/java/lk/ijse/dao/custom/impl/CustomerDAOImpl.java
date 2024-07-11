@@ -1,5 +1,6 @@
 package lk.ijse.dao.custom.impl;
 
+import com.beust.ah.A;
 import lk.ijse.dao.SQLUtil;
 import lk.ijse.dao.custom.CustomerDAO;
 import lk.ijse.db.DbConnection;
@@ -54,5 +55,16 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("DELETE FROM customer WHERE customerId=?",id);
+    }
+
+    @Override
+    public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
+        ArrayList<String> all = new ArrayList<>();
+        ResultSet resultSet = SQLUtil.execute("SELECT customerId FROM customer");
+        while (resultSet.next()){
+            String id = resultSet.getString("customerId");
+            all.add(id);
+        }
+        return all;
     }
 }

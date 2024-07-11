@@ -16,4 +16,6 @@ public interface ProductBO extends SuperBO {
     boolean delete(String id) throws SQLException, ClassNotFoundException;
 
     ProductDTO searchProduct(String id) throws SQLException, ClassNotFoundException;
+
+    ArrayList<String> getProductCodes() throws SQLException, ClassNotFoundException;
 }

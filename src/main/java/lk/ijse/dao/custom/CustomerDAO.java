@@ -9,5 +9,5 @@ import java.util.ArrayList;
 public interface CustomerDAO extends CrudDao<Customer> {
 
 
-
+    ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException;
 }

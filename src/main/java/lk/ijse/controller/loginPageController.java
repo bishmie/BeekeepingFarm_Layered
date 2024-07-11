@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import lk.ijse.bo.BOFactory;
+import lk.ijse.bo.custom.UserBO;
 import lk.ijse.db.DbConnection;
 
 import java.io.IOException;
@@ -28,25 +30,16 @@ public class loginPageController {
 
 
 
-   /* public void initialize(URL location, ResourceBundle resources) {
-        File file = new File("/icon/loginVideo.mp4");
-        Media media = new Media(file.toURI().toString());
-        MediaPlayer mp = new MediaPlayer(media);
-        mp.setAutoPlay(true);
-        mediaView.setMediaPlayer(mp);
-        mp.play();
 
 
-
-    }*/
-
-
+UserBO userBO = (UserBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
     public void btnSignInOnAction(ActionEvent actionEvent) throws IOException {
 
         String userId = txtUserId.getText();
         String pw = txtPassword.getText();
 
         try {
+
             checkCredential(userId, pw);
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

@@ -1,5 +1,6 @@
 package lk.ijse.bo.custom.impl;
 
+import com.beust.ah.A;
 import lk.ijse.bo.custom.ProductBO;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.ProductDAO;
@@ -43,5 +44,17 @@ ProductDAO productDAO = (ProductDAO) DAOFactory.getDaoFactory().getDAO(DAOFactor
     public ProductDTO searchProduct(String id) throws SQLException, ClassNotFoundException {
       Product product =  productDAO.search(id);
     return new ProductDTO(product.getProductId(),product.getProductName(),product.getSellingPrice(),product.getNetWeight(),product.getQty(),product.getHarvestId());
+    }
+
+    @Override
+    public ArrayList<String> getProductCodes() throws SQLException, ClassNotFoundException {
+      ArrayList<String> allIds = new ArrayList<>();
+        ArrayList<String>all = productDAO.getAllIds();
+        for(String p: all){
+            allIds.add(p);
+
+        }
+        return allIds;
+
     }
 }

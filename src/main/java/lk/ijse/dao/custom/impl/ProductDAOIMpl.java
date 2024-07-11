@@ -2,7 +2,6 @@ package lk.ijse.dao.custom.impl;
 
 import lk.ijse.dao.SQLUtil;
 import lk.ijse.dao.custom.ProductDAO;
-import lk.ijse.entity.Customer;
 import lk.ijse.entity.Product;
 
 import java.sql.ResultSet;
@@ -50,5 +49,17 @@ public class ProductDAOIMpl implements ProductDAO {
        allProducts.add(product);
         }
         return allProducts;
+    }
+
+    @Override
+    public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
+
+        ArrayList<String> ids = new ArrayList<>();
+        ResultSet resultSet =SQLUtil.execute("SELECT productId FROM product");
+        while (resultSet.next()){
+            String productId = resultSet.getString("productId");
+        ids.add(productId);
+        }
+        return ids;
     }
 }

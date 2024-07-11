@@ -2,10 +2,12 @@ package lk.ijse.bo.custom.impl;
 
 import lk.ijse.bo.custom.CustomerBO;
 import lk.ijse.dao.DAOFactory;
+import lk.ijse.dao.SQLUtil;
 import lk.ijse.dao.custom.CustomerDAO;
 import lk.ijse.entity.Customer;
 import lk.ijse.model.CustomerDTO;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -45,7 +47,15 @@ public class CustomerBOImpl implements CustomerBO {
         return customerDAO.delete(id);
     }
 
-
+    @Override
+    public ArrayList<String> getAllCusIds() throws SQLException, ClassNotFoundException {
+        ArrayList<String> allIds = customerDAO.getAllIds();
+        ArrayList<String> customerIds = new ArrayList<>();
+        for(String i : allIds){
+            customerIds.add(i);
+        }
+        return customerIds;
+    }
 
 
 }

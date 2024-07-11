@@ -7,4 +7,5 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface ProductDAO extends CrudDao<Product> {
+    ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException;
 }
