@@ -3,6 +3,7 @@ package lk.ijse.dao.custom.impl;
 import lk.ijse.bo.custom.HarvestBO;
 import lk.ijse.dao.SQLUtil;
 import lk.ijse.dao.custom.HarvestDAO;
+import lk.ijse.entity.Customer;
 import lk.ijse.entity.Harvest;
 import net.sf.jasperreports.engine.type.BreakTypeEnum;
 
@@ -18,6 +19,18 @@ public class HarvestDAOImpl implements HarvestDAO {
 
     @Override
     public Harvest search(String id) throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.execute("SELECT * FROM harvest WHERE harvestId =?", id);
+        if (resultSet.next()) {
+            String date = resultSet.getString(2);
+            String amount = resultSet.getString(3);
+            String quality = resultSet.getString(4);
+            String beehiveId = resultSet.getString(5);
+            String collectorId= resultSet.getString(6);
+            String harvestType = resultSet.getString(7);
+            String grade = resultSet.getString(8);
+            return new Harvest(resultSet.getString(1), date, amount, quality, beehiveId,collectorId,harvestType,grade);
+
+        }
         return null;
     }
 

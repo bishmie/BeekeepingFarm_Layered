@@ -256,7 +256,25 @@ public class HarvestDetailController {
     @FXML
     void txtSearchOnAction(ActionEvent event) throws SQLException {
         String id = txtHarvestId.getText();
+        try {
+            HarvestDTO harvestDTO = harvestBO.searchHarvest(id);
+            if(harvestDTO!=null){
+                txtProductionDate.setText(harvestDTO.getProductionDate());
+                txtAmountOfLiters.setText(harvestDTO.getAmountOfLiters());
+                txtQualityNotes.setText(harvestDTO.getQualityNotes());
+                cmbBeehiveId.setValue(harvestDTO.getBeehiveId());
+                cmbCollectorId.setValue(harvestDTO.getCollectorId());
+                txtHarvestType.setText(harvestDTO.getHarvestType());
+                txtGrade.setText(harvestDTO.getGrade());
 
+
+            }
+            else{
+                new Alert(Alert.AlertType.ERROR,"harvest not found");
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }

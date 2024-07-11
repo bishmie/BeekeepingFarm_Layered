@@ -155,6 +155,7 @@ public class ProductFormController {
         boolean isUpdate = productBO.updateProduct(new ProductDTO(ProductId, ProductName, SellingPrice, NetWeight, Qty, harvestId));
         if (isUpdate) {
             new Alert(Alert.AlertType.INFORMATION, "Product is Updated Successfully").show();
+            loadAllCustomers();
         } else {
             new Alert(Alert.AlertType.ERROR, "Product is Not Updated").show();
 

@@ -413,7 +413,7 @@ public void initializer(){
     }
 
     private void navigateToSupplierManagement() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/SupplierManagement.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SupplierManagement.fxml"));
         Parent PerenetRootNode = null;
 
         PerenetRootNode = loader.load();
@@ -428,7 +428,7 @@ public void initializer(){
     }
 
     private void navigateToBeekeeperManagement() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/BeeKeeperManage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BeeKeeperManage.fxml"));
         Parent PerenetRootNode = null;
 
         PerenetRootNode = loader.load();
@@ -444,7 +444,7 @@ public void initializer(){
     }
 
     private void navigateToCustomerManagement() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/customerForm.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/customerForm.fxml"));
         Parent PerenetRootNode = null;
 
         PerenetRootNode = loader.load();
@@ -477,7 +477,7 @@ public void initializer(){
     }
 
     private void navigateToOrderForm() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/PlaceOrderForm.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PlaceOrderForm.fxml"));
         Parent PerenetRootNode = null;
 
         PerenetRootNode = loader.load();

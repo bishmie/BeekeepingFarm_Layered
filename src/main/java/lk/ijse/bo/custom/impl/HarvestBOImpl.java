@@ -49,4 +49,10 @@ public class HarvestBOImpl implements HarvestBO {
         System.out.println("bo eke");
         return harvestDAO.update(new Harvest(harvestDTO.getHarvestId(),harvestDTO.getProductionDate(),harvestDTO.getAmountOfLiters(),harvestDTO.getQualityNotes(),harvestDTO.getBeehiveId(),harvestDTO.getCollectorId(),harvestDTO.getHarvestType(),harvestDTO.getGrade()));
     }
+
+    @Override
+    public HarvestDTO searchHarvest(String id) throws SQLException, ClassNotFoundException {
+        Harvest h = harvestDAO.search(id);
+        return new HarvestDTO(h.getHarvestId(),h.getProductionDate(),h.getAmountOfLiters(),h.getQualityNotes(),h.getBeehiveId(),h.getCollectorId(),h.getHarvestType(),h.getGrade());
+    }
 }

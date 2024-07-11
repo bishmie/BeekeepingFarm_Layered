@@ -16,6 +16,9 @@ import lk.ijse.bo.custom.PlaceOrderBO;
 import lk.ijse.bo.custom.ProductBO;
 import lk.ijse.db.DbConnection;
 
+import lk.ijse.model.OrderDTO;
+import lk.ijse.model.OrderProductDTO;
+import lk.ijse.model.PlaceOrderDTO;
 import lk.ijse.tm.CartTM;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -219,6 +222,40 @@ public class PlaceOrderFormController {
 
 
         public void btnConfirmOrderOnAction (ActionEvent actionEvent){
+
+            String orderId = lblOrderId.getText();
+            String cusId = cmbCustomerId.getValue();
+            Date date = Date.valueOf(LocalDate.now());
+
+            var order = new OrderDTO(orderId, cusId, date);
+
+            List<OrderProductDTO> odList = new ArrayList<>();
+
+            for (int i = 0; i < tblPlaceOrder.getItems().size(); i++) {
+                CartTM tm = obList.get(i);
+
+                OrderProductDTO od = new OrderProductDTO(
+                        orderId,
+                        tm.getProductId(),
+                        tm.getQty(),
+                        tm.getSellingPrice()
+                );
+
+                odList.add(od);
+            }
+            // code //////////////////////////
+
+            PlaceOrderDTO po = new PlaceOrderDTO(order, odList);
+            try {
+                boolean isPlaced = placeOrderBO.placeOrder(po);
+                if(isPlaced) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Order Placed!").show();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Order Placed Unsuccessfully!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
 
 
             }

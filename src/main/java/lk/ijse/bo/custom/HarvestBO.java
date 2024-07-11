@@ -16,4 +16,6 @@ public interface HarvestBO extends SuperBO {
     boolean saveHarvest(HarvestDTO harvestDTO) throws SQLException, ClassNotFoundException;
 
     boolean updateHarvest(HarvestDTO harvestDTO) throws SQLException, ClassNotFoundException;
+
+    HarvestDTO searchHarvest(String id) throws SQLException, ClassNotFoundException;
 }

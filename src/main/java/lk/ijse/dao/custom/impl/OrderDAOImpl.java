@@ -11,7 +11,8 @@ import java.util.ArrayList;
 public class OrderDAOImpl implements OrderDAO {
     @Override
     public boolean save(Order entity) throws SQLException, ClassNotFoundException {
-        return false;
+        return SQLUtil.execute("INSERT INTO orders(orderId,customerId,orderDate) VALUES (?,?,?)", entity.getOrderId(), entity.getCustomerId(),entity.getOrderDate());
+
     }
 
     @Override
