@@ -1,11 +1,14 @@
 package lk.ijse.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.bo.BOFactory;
+import lk.ijse.bo.custom.HarvestBO;
 import lk.ijse.bo.custom.ProductBO;
 import lk.ijse.db.DbConnection;
 
@@ -39,7 +42,7 @@ public class ProductFormController {
 
    // ProductBOImpl productBO = new ProductBOImpl();
     ProductBO productBO = (ProductBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PRODUCT);
-
+    HarvestBO harvestBO = (HarvestBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.HARVEST);
     public void initialize() {
         setCellValueFactory();
         loadAllCustomers();
@@ -48,6 +51,18 @@ public class ProductFormController {
     }
 
     private void getHarvestIds() {
+        ObservableList<String> harvestIds = FXCollections.observableArrayList();
+        try {
+            ArrayList<String> allIds = harvestBO.getHarvestIds();
+            for(String i : allIds){
+                harvestIds.add(i);
+            }
+            cmbHarvestId.setItems(harvestIds);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

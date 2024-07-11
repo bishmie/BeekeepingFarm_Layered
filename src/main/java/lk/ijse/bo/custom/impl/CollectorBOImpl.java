@@ -43,4 +43,14 @@ public class CollectorBOImpl implements CollectorBO {
     public boolean deleteCollector(String id) throws SQLException, ClassNotFoundException {
         return collectorDAO.delete(id);
     }
+
+    @Override
+    public ArrayList<String> getCollectorIds() throws SQLException, ClassNotFoundException {
+        ArrayList<String> all = new ArrayList<>();
+        ArrayList<String> allIds = collectorDAO.getCollectorIds();
+        for(String i : allIds){
+            all.add(i);
+        }
+        return all;
+    }
 }

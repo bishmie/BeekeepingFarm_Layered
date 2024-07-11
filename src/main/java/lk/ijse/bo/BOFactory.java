@@ -11,7 +11,7 @@ public class BOFactory {
     }
 
     public enum BOTypes{
-        CUSTOMER,USER,PRODUCT,SUPPLIER,QUEENBEE,COLLECTOR,HIVE,PO
+        CUSTOMER,USER,PRODUCT,SUPPLIER,QUEENBEE,COLLECTOR,HIVE,PO,ORDER,HARVEST
     }
     //Object creation logic for BO objects
     public SuperBO getBO(BOTypes types){
@@ -32,6 +32,10 @@ public class BOFactory {
                 return new HiveBOImpl();
             case PO:
                 return new PlaceOrderBOImpl();
+            case ORDER:
+                return new OrderBOImpl();
+            case HARVEST:;
+                return new HarvestBOImpl();
 
             default:
                 return null;

@@ -4,6 +4,7 @@ import lk.ijse.dao.SQLUtil;
 import lk.ijse.dao.custom.SupplierDAO;
 import lk.ijse.entity.Supplier;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -31,5 +32,15 @@ public class SupplierDAOIMPL implements SupplierDAO {
     @Override
     public ArrayList<Supplier> getAll() throws SQLException, ClassNotFoundException {
         return null;
+    }
+
+    @Override
+    public int getAllSupplierCount() throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.execute("SELECT COUNT(*) AS supplierrCount FROM supplier");
+        if(resultSet.next()){
+            return resultSet.getInt("supplierrCount");
+
+        }
+        return 0;
     }
 }

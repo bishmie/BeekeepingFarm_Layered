@@ -46,4 +46,14 @@ public class HiveBOImpl implements HiveBO {
         BeeHive beeHive = hiveDAO.search(id);
         return new BeeHiveDTO(beeHive.getBeehiveId(),beeHive.getType(),beeHive.getLocation(),beeHive.getPopulation(),beeHive.getInspectionDate(),beeHive.getInspectionResult());
     }
+
+    @Override
+    public ArrayList<String> getHiveIds() throws SQLException, ClassNotFoundException {
+        ArrayList<String > all = new ArrayList<>();
+        ArrayList<String> allIds = hiveDAO.getIds();
+        for(String i : allIds){
+            all.add(i);
+        }
+        return all;
+    }
 }

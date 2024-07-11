@@ -34,4 +34,9 @@ public class SupplierBOImpl implements SupplierBO {
         Supplier supplier=  supplierDAO.search(id);
         return new SupplierDTO(supplier.getSupplierId(),supplier.getName(),supplier.getAddress(),supplier.getContact(),supplier.getEmail(),supplier.getInventoryId());
     }
+
+    @Override
+    public int getSupplierCount() throws SQLException, ClassNotFoundException {
+        return supplierDAO.getAllSupplierCount();
+    }
 }

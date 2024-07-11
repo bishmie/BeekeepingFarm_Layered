@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.UserBO;
 import lk.ijse.db.DbConnection;
+import lk.ijse.model.UserDTO;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -39,7 +40,6 @@ UserBO userBO = (UserBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
         String pw = txtPassword.getText();
 
         try {
-
             checkCredential(userId, pw);
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -47,6 +47,8 @@ UserBO userBO = (UserBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
     }
 
     private void checkCredential(String userId, String pw) throws SQLException, IOException {
+
+
         String sql = "SELECT id, password FROM user WHERE id = ?";
 
         Connection connection = DbConnection.getInstance().getConnection();

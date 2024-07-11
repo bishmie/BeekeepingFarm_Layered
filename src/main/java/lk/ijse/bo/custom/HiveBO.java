@@ -16,4 +16,6 @@ public interface HiveBO extends SuperBO {
     boolean delete(String id) throws SQLException, ClassNotFoundException;
 
     BeeHiveDTO searchHive(String id) throws SQLException, ClassNotFoundException;
+
+    ArrayList<String> getHiveIds() throws SQLException, ClassNotFoundException;
 }

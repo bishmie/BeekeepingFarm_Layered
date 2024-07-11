@@ -13,7 +13,7 @@ public class DAOFactory {
     }
 
     public enum DAOTypes {
-        CUSTOMER, USER, PRODUCT, SUPPLIER,QUEENBEE, COLLECTOR,HIVE,ORDER,ORDERPRODUCT
+        CUSTOMER, USER, PRODUCT, SUPPLIER,QUEENBEE, COLLECTOR,HIVE,ORDER,ORDERPRODUCT,HARVEST
     }
 
     public SuperDao getDAO(DAOTypes types) {
@@ -36,6 +36,8 @@ public class DAOFactory {
                 return new OrderDAOImpl();
             case ORDERPRODUCT:
                 return new OrderDetailsDAOImpl();
+            case HARVEST:
+                return  new HarvestDAOImpl();
 
 
             default:

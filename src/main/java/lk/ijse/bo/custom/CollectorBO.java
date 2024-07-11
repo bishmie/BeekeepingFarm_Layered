@@ -16,4 +16,6 @@ public interface CollectorBO extends SuperBO {
     CollectorDTO searchCollector(String id) throws SQLException, ClassNotFoundException;
 
     boolean deleteCollector(String id) throws SQLException, ClassNotFoundException;
+
+    ArrayList<String> getCollectorIds() throws SQLException, ClassNotFoundException;
 }

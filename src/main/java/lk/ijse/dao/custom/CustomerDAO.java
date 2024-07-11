@@ -10,4 +10,6 @@ public interface CustomerDAO extends CrudDao<Customer> {
 
 
     ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException;
+
+    int getAllCustomerCount() throws SQLException, ClassNotFoundException;
 }

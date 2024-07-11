@@ -19,6 +19,8 @@ public interface CustomerBO extends SuperBO {
 
 
     ArrayList<String> getAllCusIds() throws SQLException, ClassNotFoundException;
+
+ int getAllCustomerCount() throws SQLException, ClassNotFoundException;
 }
 
 

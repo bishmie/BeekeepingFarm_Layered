@@ -57,6 +57,11 @@ public class CustomerBOImpl implements CustomerBO {
         return customerIds;
     }
 
+    @Override
+    public int getAllCustomerCount() throws SQLException, ClassNotFoundException {
+        return customerDAO.getAllCustomerCount();
+    }
+
 
 }
 

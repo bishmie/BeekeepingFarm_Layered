@@ -50,4 +50,33 @@ public class OrderDAOImpl implements OrderDAO {
         }
         return null;
     }
+
+    @Override
+    public int todayOrderCount() throws SQLException, ClassNotFoundException {
+        ResultSet resultSet= SQLUtil.execute("SELECT COUNT(*) AS todayOrderCount FROM orders WHERE DATE(orderDate) = CURRENT_DATE");
+        if (resultSet.next()) {
+            return resultSet.getInt("todayOrderCount");
+        }
+        return 0;
+    }
+
+    @Override
+    public int totalOrderCount() throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.execute("SELECT COUNT(*) AS orderCount FROM orderProduct");
+   if(resultSet.next()){
+       return resultSet.getInt("orderCount");
+
+   }
+return 0;
+    }
+
+    @Override
+    public int getTotalRevenue() throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.execute("SELECT SUM(qty * sellingPrice) AS totalRevenue FROM orderProduct");
+        if (resultSet.next()) {
+            return resultSet.getInt("totalRevenue");
+        }
+
+        return 0;
+    }
 }

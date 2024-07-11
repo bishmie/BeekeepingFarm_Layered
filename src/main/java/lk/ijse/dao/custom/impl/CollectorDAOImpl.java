@@ -48,4 +48,14 @@ return SQLUtil.execute("UPDATE honeyCollector SET name =? , address=? , contact=
     return getAllCollectors;
     }
 
+    @Override
+    public ArrayList<String> getCollectorIds() throws SQLException, ClassNotFoundException {
+        ArrayList<String> ids = new ArrayList<>();
+        ResultSet resultSet = SQLUtil.execute("SELECT collectorId FROM honeyCollector");
+         while (resultSet.next()){
+             String  id = resultSet.getString("collectorId");
+             ids.add(id);
+         }
+         return ids;
+    }
 }
