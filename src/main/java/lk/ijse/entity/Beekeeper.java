@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 
-public class beekeeper {
+public class Beekeeper {
     private String beekeeperId;
     private String Name;
     private String Address;

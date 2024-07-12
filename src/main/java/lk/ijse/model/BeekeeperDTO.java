@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 
-public class beekeeperDTO {
+public class BeekeeperDTO {
     private String beekeeperId;
     private String Name;
     private String Address;

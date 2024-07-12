@@ -81,7 +81,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public Customer searchById(String id) throws SQLException, ClassNotFoundException {
-        System.out.println("id : " +id);
+        //System.out.println("id : " +id);
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM customer WHERE customerId = ?");
         if (resultSet.next()) {
             String CustomerId = resultSet.getString(1);
