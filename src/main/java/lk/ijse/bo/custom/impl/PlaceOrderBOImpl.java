@@ -4,6 +4,7 @@ import lk.ijse.bo.custom.PlaceOrderBO;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.OrderDAO;
 import lk.ijse.dao.custom.OrderDetailsDAO;
+import lk.ijse.dao.custom.ProductDAO;
 import lk.ijse.db.DbConnection;
 import lk.ijse.entity.Order;
 import lk.ijse.entity.OrderProduct;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 
 
 public class PlaceOrderBOImpl implements PlaceOrderBO {
-
+    ProductDAO productDAO = (ProductDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PRODUCT);
     OrderDAO orderDAO = (OrderDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDER);
     OrderDetailsDAO orderDetailsDAO = (OrderDetailsDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDERPRODUCT);
 
@@ -46,11 +47,17 @@ public class PlaceOrderBOImpl implements PlaceOrderBO {
                 for (OrderProductDTO orderProduct : po.getOdList()){
                     orderProducts.add(new OrderProduct(orderProduct.getOrderId(),orderProduct.getProductId(), orderProduct.getQty(), orderProduct.getSellingPrice()));
                 }
-                boolean isSavedOd = orderDetailsDAO.saveOD(orderProducts);
+                    boolean isUpdated = productDAO.updateProArr(orderProducts);
 
-                if (isSavedOd){
-                    connection.commit();
-                    return true;
+                if (isUpdated){
+                    boolean isSavedOd = orderDetailsDAO.saveOD(orderProducts);
+                    if (isSavedOd){
+                        connection.commit();
+                        return true;
+                    }else{
+                        connection.rollback();
+                        return false;
+                    }
                 }else {
                     connection.rollback();
                     return false;

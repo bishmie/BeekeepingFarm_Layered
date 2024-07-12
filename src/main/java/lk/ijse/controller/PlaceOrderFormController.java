@@ -16,9 +16,8 @@ import lk.ijse.bo.custom.PlaceOrderBO;
 import lk.ijse.bo.custom.ProductBO;
 import lk.ijse.db.DbConnection;
 
-import lk.ijse.model.OrderDTO;
-import lk.ijse.model.OrderProductDTO;
-import lk.ijse.model.PlaceOrderDTO;
+import lk.ijse.entity.Customer;
+import lk.ijse.model.*;
 import lk.ijse.tm.CartTM;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -263,15 +262,43 @@ public class PlaceOrderFormController {
 
 
     public void cmbCustomerOnAction(ActionEvent actionEvent) {
+        String id = cmbCustomerId.getValue();
+       // System.out.println("combo Values : "+ id);
+        try {
+            CustomerDTO customer = customerBO.searchCustomer(id);
+            if(customer != null) {
+                lblCustomerName.setText(customer.getName());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
 
     public void cmbProductOnAction(ActionEvent actionEvent) {
+        String id = cmbProductId.getValue();
+        try {
+            ProductDTO productDTO = productBO.searchProduct(id);
+            if(productDTO != null) {
+                lblProductName.setText(productDTO.getProductName());
+                lblSellingPrice.setText(productDTO.getSellingPrice());
+                lblQtyOnHand.setText(productDTO.getQty());
+            }
+            txtQty.requestFocus();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
-    public void txtQtyOnAction(ActionEvent event) {btnAddToCartOnAction(event);
+    public void txtQtyOnAction(ActionEvent event) {
+            btnAddToCartOnAction(event);
 
     }
 
@@ -296,5 +323,8 @@ public class PlaceOrderFormController {
         JasperViewer.viewReport(jasperPrint, false);
     }
 
+    public void btnMoneyReceiving(ActionEvent actionEvent) {
+
     }
+}
 

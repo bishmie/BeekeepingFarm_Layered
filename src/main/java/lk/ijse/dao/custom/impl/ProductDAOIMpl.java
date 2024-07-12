@@ -2,6 +2,7 @@ package lk.ijse.dao.custom.impl;
 
 import lk.ijse.dao.SQLUtil;
 import lk.ijse.dao.custom.ProductDAO;
+import lk.ijse.entity.OrderProduct;
 import lk.ijse.entity.Product;
 
 import java.sql.ResultSet;
@@ -61,5 +62,21 @@ public class ProductDAOIMpl implements ProductDAO {
         ids.add(productId);
         }
         return ids;
+    }
+
+    @Override
+    public boolean updateProArr(ArrayList<OrderProduct> productArrayList) throws SQLException, ClassNotFoundException {
+        for (OrderProduct od : productArrayList) {
+            boolean isUpdateQty = this.updateQnt(od.getProductId(), od.getQty());
+            if (!isUpdateQty) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean updateQnt(String pId, int qnt) throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute("UPDATE product SET qty = qty - ? WHERE productId = ?",qnt,pId);
     }
 }

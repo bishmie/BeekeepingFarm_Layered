@@ -16,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.Util.Regex;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.CustomerBO;
 import lk.ijse.dao.DAOFactory;
@@ -248,21 +249,32 @@ public class CustomerFormController {
     }
 
     public void emailAddressOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.EMAIL, txtCustomerEmail);
 
     }
 
     public void contactOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.CONTACT, txtCustomerContact);
 
     }
 
     public void customerIdOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.CID, txtCustomerId);
 
     }
     public boolean isValid(){
-       return true;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.CID,txtCustomerId)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.EMAIL,txtCustomerEmail)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.CONTACT,txtCustomerContact)) return false;
+        return true;
     }
 
     public void btnPrintOnAction(ActionEvent actionEvent) throws JRException, SQLException {
+        JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/reports/customerReport.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint,false);
 
 
     }

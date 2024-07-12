@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.Util.Regex;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.CollectorBO;
 import lk.ijse.bo.custom.HarvestBO;
@@ -280,35 +281,35 @@ public class HarvestDetailController {
     }
 
     public void productionDateOnKeyReleased(KeyEvent keyEvent) {
-       // Regex.setTextColor(lk.ijse.util.TextField.DATE, txtProductionDate);
+        Regex.setTextColor(lk.ijse.Util.TextField.DATE, txtProductionDate);
     }
 
     public void harvestIdOnKeyReleased(KeyEvent keyEvent) {
-       // Regex.setTextColor(lk.ijse.util.TextField.HAID, txtHarvestId);
+        Regex.setTextColor(lk.ijse.Util.TextField.HAID, txtHarvestId);
     }
 
     public void amountOfqtyOnKeyReleased(KeyEvent keyEvent) {
-       // Regex.setTextColor(lk.ijse.util.TextField.AMOUNT, txtAmountOfLiters);
+       Regex.setTextColor(lk.ijse.Util.TextField.AMOUNT, txtAmountOfLiters);
     }
 
     public void harvestTypeOnKeyReleased(KeyEvent keyEvent) {
-        //Regex.setTextColor(lk.ijse.util.TextField.DESCRIPTION, txtHarvestType);
+        Regex.setTextColor(lk.ijse.Util.TextField.DESCRIPTION, txtHarvestType);
     }
 
     public void qualityNotesOnKeyRelleased(KeyEvent keyEvent) {
-       // Regex.setTextColor(lk.ijse.util.TextField.DESCRIPTION, txtQualityNotes);
+        Regex.setTextColor(lk.ijse.Util.TextField.DESCRIPTION, txtQualityNotes);
     }
 
     public void gradeOnKeyReleased(KeyEvent keyEvent) {
-        //Regex.setTextColor(lk.ijse.util.TextField.GRADE, txtGrade);
+        Regex.setTextColor(lk.ijse.Util.TextField.GRADE, txtGrade);
     }
     public boolean isValid(){
-       /* if (!Regex.setTextColor(lk.ijse.util.TextField.HAID,txtHarvestId)) return false;
-        if (!Regex.setTextColor(lk.ijse.util.TextField.DATE,txtProductionDate)) return false;
-        if (!Regex.setTextColor(lk.ijse.util.TextField.AMOUNT,txtAmountOfLiters)) return false;
-        if (!Regex.setTextColor(lk.ijse.util.TextField.DESCRIPTION,txtQualityNotes)) return false;
-        if (!Regex.setTextColor(lk.ijse.util.TextField.DESCRIPTION,txtHarvestType)) return false;
-        if (!Regex.setTextColor(lk.ijse.util.TextField.GRADE,txtGrade)) return false;*/
+       if (!Regex.setTextColor(lk.ijse.Util.TextField.HAID,txtHarvestId)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.DATE,txtProductionDate)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.AMOUNT,txtAmountOfLiters)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.DESCRIPTION,txtQualityNotes)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.DESCRIPTION,txtHarvestType)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.GRADE,txtGrade)) return false;
         return true;
     }
 

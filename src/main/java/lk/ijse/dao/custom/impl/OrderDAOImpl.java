@@ -38,7 +38,27 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public String getNextOrderId() throws SQLException, ClassNotFoundException {
         ResultSet resultSet = SQLUtil.execute("SELECT orderId FROM orders ORDER BY orderId DESC LIMIT 1");
-        return resultSet.next() ? String.format("OID-%03d", (Integer.parseInt(resultSet.getString("oid").replace("OID-", "")) + 1)) : "OID-001";
+
+        if (resultSet.next()) {
+            String orderId = resultSet.getString("orderId");
+            if (orderId != null && orderId.startsWith("OID-")) {
+                try {
+                    int numericId = Integer.parseInt(orderId.replace("OID-", ""));
+                    return String.format("OID-%03d", numericId + 1);
+                } catch (NumberFormatException e) {
+                    // Log the error and handle it appropriately
+                    e.printStackTrace();
+                    // Decide on a fallback orderId, e.g., "OID-001"
+                    return "OID-001";
+                }
+            } else {
+                // Handle the case where the orderId does not start with "OID-"
+                // Decide on a fallback orderId, e.g., "OID-001"
+                return "OID-001";
+            }
+        } else {
+            return "OID-001";
+        }
 
     }
 
