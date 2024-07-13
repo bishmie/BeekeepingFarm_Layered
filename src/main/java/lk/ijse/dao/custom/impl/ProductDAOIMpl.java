@@ -30,7 +30,7 @@ public class ProductDAOIMpl implements ProductDAO {
 
     @Override
     public boolean update(Product entity) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("UPDATE product SET productName =?, sellingPrice =?, netWeight =?, qty =?, harvestId =? WHERE productId =?",entity.getProductName(),entity.getNetWeight(),entity.getQty(),entity.getHarvestId(),entity.getProductId());
+        return SQLUtil.execute("UPDATE product SET productName =?, sellingPrice =?, netWeight =?, qty =?, harvestId =? WHERE productId =?",entity.getProductName(),entity.getSellingPrice(),entity.getNetWeight(),entity.getQty(),entity.getHarvestId(),entity.getProductId());
 
     }
 

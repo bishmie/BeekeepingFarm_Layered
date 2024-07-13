@@ -168,7 +168,7 @@ public class HarvestDetailController {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
+clearFields();
 
     }
 
@@ -202,7 +202,7 @@ public class HarvestDetailController {
             throw new RuntimeException(e);
         }
 
-
+clearFields();
     }
 
     private void clearFields() {
@@ -249,7 +249,7 @@ public class HarvestDetailController {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
+clearFields();
     }
 
 

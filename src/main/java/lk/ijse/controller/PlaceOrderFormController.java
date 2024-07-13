@@ -249,6 +249,7 @@ public class PlaceOrderFormController {
                 boolean isPlaced = placeOrderBO.placeOrder(po);
                 if(isPlaced) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Order Placed!").show();
+                    tblPlaceOrder.refresh();
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Order Placed Unsuccessfully!").show();
                 }

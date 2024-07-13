@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.Util.Regex;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.HarvestBO;
 import lk.ijse.bo.custom.ProductBO;
@@ -159,9 +160,10 @@ public class ProductFormController {
         } else {
             new Alert(Alert.AlertType.ERROR, "Product is Not Updated").show();
 
-            clearFields();
+
 
         }
+        clearFields();
     }
         public void btnDeleteOnAction (ActionEvent actionEvent){
 
@@ -178,6 +180,7 @@ public class ProductFormController {
                 boolean isDeleted = productBO.delete(id);
                 if(isDeleted) {
                     new Alert(Alert.AlertType.CONFIRMATION, "product is successfully deleted!").show();
+                    loadAllCustomers();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -213,22 +216,38 @@ public class ProductFormController {
         }
 
     public void txtProductIdOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.PROID, txtProductId);
+
 
     }
 
     public void netWeightOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.WEIGHT, txtNetWeight);
+
 
     }
 
     public void productNameOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.NAME, txtProductName);
+
     }
 
     public void qtyOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.QTY, txtQty);
+
     }
 
     public void sellingPriceOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.PRICE, txtSellingPrice);
+
     }
     public boolean isValid(){
+
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.PROID,txtProductId)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtProductName)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.PRICE,txtSellingPrice)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.WEIGHT,txtNetWeight)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.QTY,txtQty)) return false;
         return true;
     }
 

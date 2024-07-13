@@ -76,12 +76,12 @@ public class HiveDAOImpl implements HiveDAO {
 
     @Override
     public ArrayList<String> getIds() throws SQLException, ClassNotFoundException {
-        ArrayList<String> allIds = new ArrayList<>();
+        ArrayList<String> all = new ArrayList<>();
         ResultSet resultSet = SQLUtil.execute("SELECT beehiveId FROM beehive");
-        while (resultSet.next()){
-            String  id = resultSet.getString("beehiveId");
-            allIds.add(id);
+        while (resultSet.next()) {
+            String id = resultSet.getString("beehiveId");
+            all.add(id);
         }
-        return allIds;
+        return all;
     }
 }

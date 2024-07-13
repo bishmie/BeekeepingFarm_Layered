@@ -7,7 +7,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.Util.Regex;
 import lk.ijse.bo.BOFactory;
+import lk.ijse.bo.custom.HiveBO;
 import lk.ijse.bo.custom.QueenBeeBO;
 import lk.ijse.db.DbConnection;
 import lk.ijse.entity.BeeQueen;
@@ -40,6 +42,7 @@ public class QueenBeeManageController {
     public TableView<QueenBeeTM> tblAssignedQueenBees;
     public TableView<QueenBeeTM> tblAvailableQueenBees;
 
+    HiveBO hiveBO = (HiveBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.HIVE);
     QueenBeeBO queenBeeBO =(QueenBeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.QUEENBEE);
 
     public void initialize() {
@@ -51,6 +54,18 @@ public class QueenBeeManageController {
 
 
     private void getHiveIds() {
+        ObservableList<String> getHiveIds = FXCollections.observableArrayList();
+        try {
+            ArrayList<String> hiveIds= hiveBO.getHiveIds();
+            for(String i : hiveIds){
+                getHiveIds.add(i);
+            }
+            cmbBeeHiveId.setItems(getHiveIds);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -167,6 +182,7 @@ public class QueenBeeManageController {
             boolean isDeleted = queenBeeBO.deleteQueen(id);
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "queen bee is successfully deleted!").show();
+                loadAllAvailabledQueenBees();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -212,25 +228,44 @@ public class QueenBeeManageController {
     }
 
     public  void QueenIdOnKeyReleased(KeyEvent keyEvent ) {
+        Regex.setTextColor(lk.ijse.Util.TextField.QID, txtQueenId);
+
     }
 
     public void breedingHistoryOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.DESCRIPTION, txtBreedingHistory);
+
     }
 
     public void bodyfeaturesOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.DESCRIPTION, txtBodyFeatures);
+
     }
 
     public void healthStatusOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.DESCRIPTION, txtHealthStatus);
+
     }
 
     public void introDateOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.DATE, txtIntroDate);
+
     }
 
     public void varietyOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.DESCRIPTION, txtVariety);
+
 
     }
     public boolean isValid(){
 
+
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.QID,txtQueenId)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.DESCRIPTION,txtBreedingHistory)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.DESCRIPTION,txtBodyFeatures)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.DESCRIPTION,txtHealthStatus)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.DESCRIPTION,txtIntroDate)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.DESCRIPTION,txtVariety)) return false;
         return true;
     }
 }

@@ -8,6 +8,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.Util.Regex;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.SupplierBO;
 import lk.ijse.db.DbConnection;
@@ -157,21 +158,34 @@ public class SupplierFormController {
 
 
     public void supplierOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.NAME, txtSupplierId);
+
     }
     public boolean isValid(){
-        return  true;
-    }
 
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.SID,txtSupplierId)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtSupplierName)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.ADDRESS,txtSupplierAddress)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.CONTACT,txtContact)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.EMAIL,txtEmail)) return false;
+        return true;}
     public void supNameOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.NAME, txtSupplierName);
+
     }
 
     public void addressOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.ADDRESS, txtSupplierAddress);
+
     }
 
     public void contactOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.CONTACT, txtContact);
+
     }
 
     public void emailOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.EMAIL, txtEmail);
 
     }
 }
